@@ -74,6 +74,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="CurePreventing.cs" />
     <Compile Include="Handlers\Dying.cs" />
+    <Compile Include="Handlers\Hurting.cs" />
     <Compile Include="Handlers\MedicalItemUsed.cs" />
     <Compile Include="Handlers\Spawning.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

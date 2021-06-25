@@ -2,10 +2,6 @@
 using Exiled.Events.EventArgs;
 using MEC;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CurePreventing.Handlers
 {
@@ -31,7 +27,7 @@ namespace CurePreventing.Handlers
 
                     if (ActivePills <= 1)
                     {
-                        ev.Player.SessionVariables.Remove("Used 500");
+                        ev.Player.SessionVariables["Used 500"] = 0;
                     }
                     else
                     {

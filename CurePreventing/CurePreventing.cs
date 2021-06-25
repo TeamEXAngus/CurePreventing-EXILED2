@@ -23,6 +23,7 @@ namespace CurePreventing
         private Handlers.Dying dying;
         private Handlers.MedicalItemUsed medicalItemUsed;
         private Handlers.Spawning spawning;
+        private Handlers.Hurting hurting;
 
         private CurePreventing()
         {
@@ -51,10 +52,12 @@ namespace CurePreventing
             dying = new Handlers.Dying();
             medicalItemUsed = new Handlers.MedicalItemUsed();
             spawning = new Handlers.Spawning();
+            hurting = new Handlers.Hurting();
 
             PlayerHandler.Dying += dying.OnDying;
             PlayerHandler.MedicalItemUsed += medicalItemUsed.OnMedicalItemUsed;
             PlayerHandler.Spawning += spawning.OnSpawning;
+            PlayerHandler.Hurting += hurting.OnHurting;
         }
 
         //Plugin shutdown code
@@ -63,10 +66,12 @@ namespace CurePreventing
             PlayerHandler.Dying -= dying.OnDying;
             PlayerHandler.MedicalItemUsed -= medicalItemUsed.OnMedicalItemUsed;
             PlayerHandler.Spawning -= spawning.OnSpawning;
+            PlayerHandler.Hurting -= hurting.OnHurting;
 
             dying = null;
             medicalItemUsed = null;
             spawning = null;
+            hurting = null;
         }
     }
 }

@@ -11,6 +11,9 @@ namespace CurePreventing
         [Description("The amount of time that using SCP-500 should protect you.")]
         public ushort PreventionTime { get; set; } = 120;
 
+        [Description("Whether or not attacking SCP-049 should allow SCP-049 to retaliate.")]
+        public bool Hurting049ResetsProtection { get; set; } = false;
+
         [Description("Whether or not hints should be used instea of broadcasts.")]
         public bool UseHints { get; set; } = true;
 
