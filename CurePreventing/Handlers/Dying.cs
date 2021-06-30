@@ -8,9 +8,20 @@ namespace CurePreventing.Handlers
     {
         public void OnDying(DyingEventArgs ev)
         {
-            if (ev.Killer.Role != RoleType.Scp049) { return; }
-            if (Convert.ToInt32(ev.Target.SessionVariables["Used 500"]) != 0)
+            Log.Debug($"{ev.Target.Nickname}({ev.Target.Role}) was killed by {ev.Killer.Nickname}({ev.Killer.Role})",
+                CurePreventing.Instance.Config.ShowDebugMessages);
+
+            if (ev.Killer.Role != RoleType.Scp049 ||
+                !ev.Target.SessionVariables.TryGetValue("Used 500", out object ActivePills))
             {
+                return;
+            }
+
+            if (Convert.ToInt32(ActivePills) > 0)
+            {
+                Log.Debug($"{ev.Target.Nickname} was protected by SCP-500; They have {ActivePills} levels of protection",
+                    CurePreventing.Instance.Config.ShowDebugMessages);
+
                 Action<Player, ushort, string> DisplayMethod;
                 if (CurePreventing.config.UseHints) { DisplayMethod = Hint; }
                 else { DisplayMethod = Broadcast; }

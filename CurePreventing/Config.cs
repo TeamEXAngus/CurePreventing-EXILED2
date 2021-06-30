@@ -8,6 +8,9 @@ namespace CurePreventing
         [Description("Whether or not this plugin is enabled.")]
         public bool IsEnabled { get; set; } = true;
 
+        [Description("Whether or not debug messages should be shown in the console.")]
+        public bool ShowDebugMessages { get; set; } = true;
+
         [Description("The amount of time that using SCP-500 should protect you.")]
         public ushort PreventionTime { get; set; } = 120;
 
