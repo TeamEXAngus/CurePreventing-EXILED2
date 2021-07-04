@@ -9,14 +9,13 @@ namespace CurePreventing
 {
     public class CurePreventing : Plugin<Config>
     {
-        private static CurePreventing singleton = new CurePreventing();
-        public static CurePreventing Instance => singleton;
+        public static CurePreventing Instance;
         public static Config config => Instance.Config;
 
         public override PluginPriority Priority { get; } = PluginPriority.Medium;
 
         public override Version RequiredExiledVersion { get; } = new Version(2, 10, 0);
-        public override Version Version { get; } = new Version(1, 0, 2);
+        public override Version Version { get; } = new Version(1, 0, 3);
 
         public List<CoroutineHandle> Coroutines = new List<CoroutineHandle>();
 
@@ -32,6 +31,8 @@ namespace CurePreventing
         //Run startup code when plugin is enabled
         public override void OnEnabled()
         {
+            Instance = this;
+
             RegisterEvents();
         }
 
